@@ -23,8 +23,13 @@ public class Student extends User {
         setBalance(getBalance() + balance);
     }
 
-    public void withdraw(double balance) {
-        this.balance.set(getBalance() - balance);
+    public boolean withdraw(double balance) {
+        if (getBalance() - balance>=0){
+            this.balance.set(getBalance() - balance);
+            return true;
+        }
+
+        return false;
     }
 
     public String getBalanceString() {

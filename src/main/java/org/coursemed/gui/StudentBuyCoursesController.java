@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import org.coursemed.classes.Course;
 import org.coursemed.classes.LoggingManager;
@@ -23,6 +24,9 @@ public class StudentBuyCoursesController {
     @FXML
     private Button buyButton;
 
+    @FXML
+    private Label infoLabel;
+
     public ObservableList<Course> getCourseList() {
         return courseList;
     }
@@ -35,18 +39,24 @@ public class StudentBuyCoursesController {
         if (courseTable.getSelectionModel().getSelectedIndex() != -1) {
             try {
                 Course course = courseTable.getSelectionModel().getSelectedItem();
-                CustomDbTools.enroll(loggedUser, course);
-                courseList.remove(course);
 
-                loggedUser.withdraw(course.getPrice());
+                if (loggedUser.withdraw(course.getPrice())) {
+                    CustomDbTools.enroll(loggedUser, course);
 
-                CustomDbTools.updateStudent(loggedUser);
+                    courseList.remove(course);
 
-                Teacher teacher=course.getTeacher();
+                    CustomDbTools.updateStudent(loggedUser);
 
-                teacher.deposit(course.getPrice());
+                    Teacher teacher = course.getTeacher();
 
-                CustomDbTools.updateTeacher(teacher);
+                    teacher.deposit(course.getPrice());
+
+                    CustomDbTools.updateTeacher(teacher);
+
+                    infoLabel.setText("");
+                } else {
+                    infoLabel.setText("Insufficient funds");
+                }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
