@@ -31,6 +31,8 @@
     </TableView>
 
     <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="viewCourseButton" onAction="#onViewCourse" disable="true" maxWidth="100">View Course</Button>
+        <Button fx:id="dropCourseButton" onAction="#onDropCourse" disable="true" maxWidth="100">Drop Course</Button>
         <Button onAction="#onBack" maxWidth="100">Back</Button>
     </HBox>
 

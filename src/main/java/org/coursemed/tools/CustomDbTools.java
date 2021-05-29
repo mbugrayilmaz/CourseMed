@@ -234,6 +234,22 @@ public class CustomDbTools {
         preparedStatement.close();
     }
 
+    public static void dropCourse(Student student, Course course) throws SQLException {
+        String query = """
+                DELETE FROM enrollment
+                WHERE student_id=? AND course_id=?;
+                """;
+
+        PreparedStatement preparedStatement = DbTools.prepareStatement(query);
+
+        preparedStatement.setInt(1, student.getId());
+        preparedStatement.setInt(2, course.getId());
+
+        preparedStatement.execute();
+
+        preparedStatement.close();
+    }
+
     public static ArrayList<Course> getAvailableCourses(Student student) throws SQLException {
         createEnrollmentIfNotExists();
 
