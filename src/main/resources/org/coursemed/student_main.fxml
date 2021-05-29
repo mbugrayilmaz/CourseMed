@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.coursemed.gui.StudentMainController"
+      alignment="CENTER"
+      spacing="20"
+      style="-fx-font-size: 15"
+      prefHeight="400.0" prefWidth="600.0">
+
+    <VBox alignment="CENTER" style="-fx-font-size: 30">
+        <Label text="${controller.loggedUser.username}"/>
+        <Label text="${controller.loggedUser.fullName}"/>
+
+        <Label text="${controller.loggedUser.balanceString}"/>
+    </VBox>
+
+    <Button onAction="#onManageCourses" maxWidth="200">Manage Courses</Button>
+    <Button onAction="#onBuyCourses" maxWidth="200">Buy Courses</Button>
+    <Button onAction="#onDepositMoney" maxWidth="200">Deposit Money</Button>
+    <Button onAction="#onLogout" maxWidth="200">Logout</Button>
+
+</VBox>

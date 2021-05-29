@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.web.WebView?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.coursemed.gui.TeacherViewSubjectController"
+      alignment="CENTER"
+      spacing="20"
+      style="-fx-padding: 50"
+      prefHeight="400.0" prefWidth="600.0">
+
+    <Label text="${controller.subject.title}" style="-fx-font-size: 30"/>
+
+    <WebView fx:id="webView"/>
+
+    <Button onAction="#onBack" maxWidth="200">Back</Button>
+</VBox>

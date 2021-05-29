@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.coursemed.gui.StudentDepositMoneyController"
+      alignment="CENTER"
+      style="-fx-padding: 50; -fx-font-size: 20"
+      spacing="20"
+      prefHeight="400.0" prefWidth="600.0">
+
+    <Label fx:id="balanceLabel" style="-fx-font-size: 40"/>
+
+    <Label fx:id="infoLabel"/>
+
+    <HBox alignment="CENTER">
+        <TextField fx:id="amountField" promptText="Amount"/>
+        <Button onAction="#onDeposit">Deposit</Button>
+    </HBox>
+
+    <Button onAction="#onBack">Back</Button>
+
+</VBox>

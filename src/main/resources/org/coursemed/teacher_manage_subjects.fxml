@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.coursemed.gui.TeacherManageSubjectsController"
+      alignment="CENTER"
+      spacing="10"
+      style="-fx-padding: 50"
+      prefHeight="400.0" prefWidth="600.0">
+
+    <Label style="-fx-font-size: 20">MANAGE SUBJECTS</Label>
+
+    <TableView fx:id="subjectTable" items="${controller.subjectList}">
+        <columns>
+            <TableColumn text="Title" prefWidth="${subjectTable.width * 0.5}">
+                <cellValueFactory>
+                    <PropertyValueFactory property="title"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Video URL" prefWidth="${subjectTable.width * 0.5}">
+                <cellValueFactory>
+                    <PropertyValueFactory property="videoUrl"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <HBox alignment="CENTER" spacing="20">
+        <Button onAction="#onAddSubject">Add Subject</Button>
+        <Button onAction="#onViewSubject">View Subject</Button>
+        <Button onAction="#onDeleteSubject">Delete Subject</Button>
+        <Button onAction="#onBack">Back</Button>
+    </HBox>
+</VBox>

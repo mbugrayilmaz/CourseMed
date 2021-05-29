@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.coursemed.gui.AdminManageTeachersControllers"
+      alignment="CENTER"
+      style="-fx-padding: 50"
+      prefHeight="400.0" prefWidth="600.0">
+
+    <TableView fx:id="teacherTable" items="${controller.teacherList}">
+        <columns>
+            <TableColumn text="Username" prefWidth="${teacherTable.width * 0.2}">
+                <cellValueFactory>
+                    <PropertyValueFactory property="username"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Password" prefWidth="${teacherTable.width * 0.2}">
+                <cellValueFactory>
+                    <PropertyValueFactory property="password"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="First Name" prefWidth="${teacherTable.width * 0.2}">
+                <cellValueFactory>
+                    <PropertyValueFactory property="firstName"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Last Name" prefWidth="${teacherTable.width * 0.2}">
+                <cellValueFactory>
+                    <PropertyValueFactory property="lastName"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Balance" prefWidth="${teacherTable.width * 0.2}">
+                <cellValueFactory>
+                    <PropertyValueFactory property="balance"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <HBox alignment="CENTER" spacing="10">
+        <Button onAction="#onBack">Back</Button>
+        <Button onAction="#onDeleteTeacher">Delete Teacher</Button>
+    </HBox>
+</VBox>

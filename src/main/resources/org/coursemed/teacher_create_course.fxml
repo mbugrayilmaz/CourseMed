@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.coursemed.gui.TeacherCreateCourseController"
+      alignment="CENTER"
+      style="-fx-padding: 100"
+      spacing="20"
+      prefHeight="400.0" prefWidth="600.0">
+
+    <TextField fx:id="nameField" promptText="Name"/>
+    <TextField fx:id="priceField" promptText="Price"/>
+    <Label fx:id="infoLabel"/>
+
+    <Button onAction="#onCreateCourse">Create Course</Button>
+    <Button onAction="#onCancel">Cancel</Button>
+</VBox>

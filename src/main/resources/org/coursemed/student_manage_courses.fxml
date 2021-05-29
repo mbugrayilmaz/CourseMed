@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.coursemed.gui.StudentManageCoursesController"
+      style="-fx-padding: 50;-fx-font-size: 15"
+      spacing="10"
+      alignment="CENTER"
+      prefHeight="400.0" prefWidth="600.0">
+
+    <TableView fx:id="courseTable" items="${controller.courseList}">
+        <columns>
+            <TableColumn text="Name" prefWidth="${courseTable.width * 0.5}">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Teacher Name" prefWidth="${courseTable.width * 0.5}">
+                <cellValueFactory>
+                    <PropertyValueFactory property="teacherName"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button onAction="#onBack" maxWidth="100">Back</Button>
+    </HBox>
+
+</VBox>

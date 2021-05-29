@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.coursemed.gui.TeacherMainController"
+      alignment="CENTER"
+      spacing="20"
+      prefHeight="400.0" prefWidth="600.0">
+
+    <VBox alignment="CENTER" style="-fx-font-size: 30">
+        <Label fx:id="usernameField" text="${controller.loggedUser.username}"/>
+        <HBox alignment="CENTER">
+            <Label fx:id="firstNameField" text="${controller.loggedUser.firstName}"/>
+            <Label text=" " style="-fx-font-size: 30"/>
+            <Label fx:id="lastNameField" text="${controller.loggedUser.lastName}"/>
+        </HBox>
+
+        <HBox alignment="CENTER">
+            <Label fx:id="balanceField" text="${controller.loggedUser.balanceString}"/>
+        </HBox>
+    </VBox>
+
+    <Button onAction="#onManageCourses" maxWidth="200">Manage Courses</Button>
+    <Button onAction="#onLogout" maxWidth="200">Logout</Button>
+
+</VBox>
