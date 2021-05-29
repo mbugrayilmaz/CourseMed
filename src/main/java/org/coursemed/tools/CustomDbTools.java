@@ -286,6 +286,7 @@ public class CustomDbTools {
         return courseList;
     }
 
+
     public static ArrayList<Subject> getSubjects(Course course) throws SQLException {
         createSubjectIfNotExists();
 

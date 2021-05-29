@@ -32,10 +32,13 @@ public class StudentManageCoursesController {
 
     @FXML
     private void onViewCourse(ActionEvent event) {
-        try {
-            App.setRoot("student_view_course");
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (courseTable.getSelectionModel().getSelectedIndex() != -1) {
+            try {
+                Context.pushContext(courseTable.getSelectionModel().getSelectedItem());
+                App.setRoot("student_view_course");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
