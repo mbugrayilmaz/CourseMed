@@ -21,6 +21,7 @@
     <Button onAction="#onManageCourses" maxWidth="200">Manage Courses</Button>
     <Button onAction="#onBuyCourses" maxWidth="200">Buy Courses</Button>
     <Button onAction="#onDepositMoney" maxWidth="200">Deposit Money</Button>
+    <Button onAction="#onEditProfile" maxWidth="200">Edit Profile</Button>
     <Button onAction="#onLogout" maxWidth="200">Logout</Button>
 
 </VBox>
