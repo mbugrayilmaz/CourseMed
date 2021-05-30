@@ -37,6 +37,15 @@ public class TeacherMainController {
     }
 
     @FXML
+    private void onEditProfile(ActionEvent event) {
+        try {
+            App.setRoot("teacher_edit_profile");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     private void onLogout(ActionEvent event) {
         LoggingManager.logout();
 

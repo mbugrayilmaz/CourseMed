@@ -204,8 +204,9 @@ public class CustomDbTools {
     }
 
     public static boolean updateUser(User user, String tableName) {
-        String query = """
-                UPDATE ?
+        String query = "UPDATE " + tableName + " ";
+
+        query += """
                 SET username=?,password=?,first_name=?,last_name=?
                 WHERE id=?;
                 """;
@@ -213,12 +214,11 @@ public class CustomDbTools {
         PreparedStatement preparedStatement = DbTools.prepareStatement(query);
 
         try {
-            preparedStatement.setString(1, tableName);
-            preparedStatement.setString(2, user.getUsername());
-            preparedStatement.setString(3, user.getPassword());
-            preparedStatement.setString(4, user.getFirstName());
-            preparedStatement.setString(5, user.getLastName());
-            preparedStatement.setInt(6, user.getId());
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getFirstName());
+            preparedStatement.setString(4, user.getLastName());
+            preparedStatement.setInt(5, user.getId());
 
             preparedStatement.executeUpdate();
 

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.coursemed.gui.TeacherEditProfileController"
+      alignment="CENTER"
+      style="-fx-padding: 40"
+      spacing="10"
+      prefHeight="400.0" prefWidth="600.0">
+
+<TextField fx:id="usernameField" promptText="Username"/>
+<PasswordField fx:id="passwordField" promptText="Password"/>
+<PasswordField fx:id="repeatPasswordField" promptText="Repeat Password"/>
+<TextField fx:id="firstNameField" promptText="First Name"/>
+<TextField fx:id="lastNameField" promptText="Last Name"/>
+<Label fx:id="infoLabel"/>
+
+<Button onAction="#onSaveChanges" maxWidth="200">Save Changes</Button>
+<Button onAction="#onCancel" maxWidth="200">Cancel</Button>
+</VBox>

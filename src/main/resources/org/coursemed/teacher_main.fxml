@@ -24,6 +24,7 @@
     </VBox>
 
     <Button onAction="#onManageCourses" maxWidth="200">Manage Courses</Button>
+    <Button onAction="#onEditProfile" maxWidth="200">Edit Profile</Button>
     <Button onAction="#onLogout" maxWidth="200">Logout</Button>
 
 </VBox>
