@@ -19,7 +19,7 @@
     <Label fx:id="infoLabel" style="-fx-text-fill: darkred"/>
 
     <HBox alignment="CENTER" spacing="5">
-        <RadioButton fx:id="studentRadioButton">Student</RadioButton>
+        <RadioButton fx:id="studentRadioButton" selected="true">Student</RadioButton>
         <RadioButton fx:id="teacherRadioButton">Teacher</RadioButton>
         <RadioButton fx:id="adminRadioButton">Admin</RadioButton>
     </HBox>
