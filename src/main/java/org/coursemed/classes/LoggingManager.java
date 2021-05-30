@@ -2,6 +2,7 @@ package org.coursemed.classes;
 
 import java.util.List;
 
+// Singleton class to track and manage logged user
 public class LoggingManager {
 
     private static User loggedUser = null;

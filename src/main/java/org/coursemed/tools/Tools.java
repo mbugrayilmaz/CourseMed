@@ -6,6 +6,7 @@ public class Tools {
     private Tools() {
     }
 
+    // Converts a YouTube link to embed links for better embedding in WebView
     public static String getEmbed(String url) {
         String domain = "https://www.youtube.com/embed/";
 
@@ -14,6 +15,7 @@ public class Tools {
         return domain + embed;
     }
 
+    // Returns a number as currency to 2 decimal places
     public static String getFormattedBalance(double balance){
         DecimalFormat formatter=new DecimalFormat("#.##₺");
 

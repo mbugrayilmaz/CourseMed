@@ -1,40 +1,40 @@
-package org.coursemed.gui;
+package org.coursemed.gui.teacher;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import org.coursemed.classes.Context;
 import org.coursemed.classes.Course;
 import org.coursemed.classes.Subject;
+import org.coursemed.gui.App;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class StudentViewCourseController {
+public class TeacherManageSubjectsController {
     private Course course;
     private final ObservableList<Subject> subjectList = FXCollections.observableArrayList();
 
     @FXML
-    public Button viewSubjectButton;
-
-    @FXML
     private TableView<Subject> subjectTable;
-
-    @FXML
-    private Label teacherNameAndRatingLabel;
 
     public ObservableList<Subject> getSubjectList() {
         return subjectList;
     }
 
-    public Course getCourse() {
-        return course;
+    @FXML
+    private void onAddSubject(ActionEvent event) {
+        try {
+            Context.pushContext(course);
+
+            App.setRoot("teacher_add_subject");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -43,27 +43,27 @@ public class StudentViewCourseController {
             Context.pushContext(course);
             Context.pushContext(subjectTable.getSelectionModel().getSelectedItem());
 
-            App.setRoot("student_view_subject");
+            App.setRoot("teacher_view_subject");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    private void onRateTeacher(ActionEvent event) {
-        try {
-            Context.pushContext(course);
+    private void onDeleteSubject(ActionEvent event) {
+        if (subjectTable.getSelectionModel().getSelectedIndex()!=-1){
+            Subject subject=subjectTable.getSelectionModel().getSelectedItem();
 
-            App.setRoot("student_rate_teacher");
-        } catch (IOException e) {
-            e.printStackTrace();
+            CustomDbTools.deleteItem(subject,"subject");
+
+            subjectList.remove(subject);
         }
     }
 
     @FXML
     private void onBack(ActionEvent event) {
         try {
-            App.setRoot("student_manage_courses");
+            App.setRoot("teacher_manage_courses");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -84,13 +84,5 @@ public class StudentViewCourseController {
         course.setSubjects(subjects);
 
         subjectList.addAll(subjects);
-
-        teacherNameAndRatingLabel.setText(course.getTeacher().getNameWithRating());
-
-        subjectTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                viewSubjectButton.setDisable(false);
-            }
-        });
     }
 }

@@ -2,6 +2,7 @@ package org.coursemed.tools;
 
 import java.sql.*;
 
+// Class for general database functions
 public class DbTools {
     private static Connection connection;
 

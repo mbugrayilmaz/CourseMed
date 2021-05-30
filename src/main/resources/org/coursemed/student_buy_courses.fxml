@@ -7,7 +7,7 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.coursemed.gui.StudentBuyCoursesController"
+      fx:controller="org.coursemed.gui.student.StudentBuyCoursesController"
       style="-fx-padding: 50;-fx-font-size: 15"
       spacing="10"
       alignment="CENTER"

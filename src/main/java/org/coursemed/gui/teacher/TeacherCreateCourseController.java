@@ -1,4 +1,4 @@
-package org.coursemed.gui;
+package org.coursemed.gui.teacher;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import org.coursemed.classes.Course;
 import org.coursemed.classes.LoggingManager;
 import org.coursemed.classes.Teacher;
+import org.coursemed.gui.App;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;

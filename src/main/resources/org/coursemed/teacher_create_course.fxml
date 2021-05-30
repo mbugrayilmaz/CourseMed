@@ -6,7 +6,7 @@
 <?import javafx.scene.control.Label?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.coursemed.gui.TeacherCreateCourseController"
+      fx:controller="org.coursemed.gui.teacher.TeacherCreateCourseController"
       alignment="CENTER"
       style="-fx-padding: 100"
       spacing="20"

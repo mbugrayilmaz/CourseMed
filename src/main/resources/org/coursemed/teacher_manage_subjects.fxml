@@ -9,7 +9,7 @@
 <?import javafx.scene.control.Label?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.coursemed.gui.TeacherManageSubjectsController"
+      fx:controller="org.coursemed.gui.teacher.TeacherManageSubjectsController"
       alignment="CENTER"
       spacing="10"
       style="-fx-padding: 50"

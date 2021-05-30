@@ -1,4 +1,4 @@
-package org.coursemed.gui;
+package org.coursemed.gui.student;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.coursemed.classes.LoggingManager;
 import org.coursemed.classes.Student;
+import org.coursemed.gui.App;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;

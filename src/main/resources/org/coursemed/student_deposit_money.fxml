@@ -7,7 +7,7 @@
 <?import javafx.scene.control.Button?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.coursemed.gui.StudentDepositMoneyController"
+      fx:controller="org.coursemed.gui.student.StudentDepositMoneyController"
       alignment="CENTER"
       style="-fx-padding: 50; -fx-font-size: 20"
       spacing="20"

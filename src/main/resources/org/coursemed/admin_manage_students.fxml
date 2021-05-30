@@ -10,7 +10,7 @@
 <?import javafx.scene.web.WebView?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.coursemed.gui.AdminManageStudentsController"
+      fx:controller="org.coursemed.gui.admin.AdminManageStudentsController"
       alignment="CENTER"
       style="-fx-padding: 50"
       prefHeight="400.0" prefWidth="600.0">

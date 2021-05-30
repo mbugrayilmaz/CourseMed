@@ -1,8 +1,10 @@
-package org.coursemed.gui;
+package org.coursemed.gui.admin;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import org.coursemed.classes.Context;
 import org.coursemed.classes.LoggingManager;
+import org.coursemed.gui.App;
 
 import java.io.IOException;
 
@@ -30,6 +32,17 @@ public class AdminMainController {
     private void onManageAdmins(ActionEvent event) {
         try {
             App.setRoot("admin_manage_admins");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void onEditProfile(ActionEvent event) {
+        try {
+            Context.pushContext("admin");
+
+            App.setRoot("edit_profile");
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,4 +1,4 @@
-package org.coursemed.gui;
+package org.coursemed.gui.teacher;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import org.coursemed.classes.*;
+import org.coursemed.gui.App;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;

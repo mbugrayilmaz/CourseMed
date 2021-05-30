@@ -9,7 +9,7 @@
 <?import javafx.scene.control.Button?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.coursemed.gui.StudentManageCoursesController"
+      fx:controller="org.coursemed.gui.student.StudentManageCoursesController"
       style="-fx-padding: 50;-fx-font-size: 15"
       spacing="10"
       alignment="CENTER"

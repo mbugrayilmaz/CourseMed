@@ -1,10 +1,11 @@
-package org.coursemed.gui;
+package org.coursemed.gui.teacher;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.web.WebView;
 import org.coursemed.classes.Context;
 import org.coursemed.classes.Subject;
+import org.coursemed.gui.App;
 
 import java.io.IOException;
 

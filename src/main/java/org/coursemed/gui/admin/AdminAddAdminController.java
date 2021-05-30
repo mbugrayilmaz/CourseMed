@@ -1,4 +1,4 @@
-package org.coursemed.gui;
+package org.coursemed.gui.admin;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,6 +7,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.coursemed.classes.Admin;
 import org.coursemed.classes.User;
+import org.coursemed.gui.App;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;

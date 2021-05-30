@@ -1,4 +1,4 @@
-package org.coursemed.gui;
+package org.coursemed.gui.student;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +11,7 @@ import org.coursemed.classes.Course;
 import org.coursemed.classes.LoggingManager;
 import org.coursemed.classes.Student;
 import org.coursemed.classes.Teacher;
+import org.coursemed.gui.App;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;

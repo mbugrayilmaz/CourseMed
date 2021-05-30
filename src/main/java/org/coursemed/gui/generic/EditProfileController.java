@@ -1,24 +1,27 @@
-package org.coursemed.gui;
+package org.coursemed.gui.generic;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.coursemed.classes.Context;
 import org.coursemed.classes.LoggingManager;
-import org.coursemed.classes.Student;
 import org.coursemed.classes.User;
+import org.coursemed.gui.App;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class StudentEditProfileController {
+public class EditProfileController {
 
-    private Student loggedUser;
+    private String type;
 
-    private ArrayList<Student> studentList;
+    private User loggedUser;
+
+    private ArrayList<User> userList;
 
     @FXML
     private TextField usernameField;
@@ -46,10 +49,10 @@ public class StudentEditProfileController {
             loggedUser.setFirstName(firstNameField.getText());
             loggedUser.setLastName(lastNameField.getText());
 
-            CustomDbTools.updateUser(loggedUser, "student");
+            CustomDbTools.updateUser(loggedUser, type);
 
             try {
-                App.setRoot("student_main");
+                App.setRoot(type + "_main");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -59,7 +62,7 @@ public class StudentEditProfileController {
     @FXML
     private void onCancel(ActionEvent event) {
         try {
-            App.setRoot("student_main");
+            App.setRoot(type + "_main");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -83,7 +86,7 @@ public class StudentEditProfileController {
             return false;
         }
 
-        if (usernameAlreadyExists(studentList, usernameField.getText())) {
+        if (usernameAlreadyExists(userList, usernameField.getText())) {
             infoLabel.setText("Username already exists, please choose another one");
 
             return false;
@@ -96,7 +99,7 @@ public class StudentEditProfileController {
 
     private boolean usernameAlreadyExists(ArrayList<? extends User> users, String username) {
         for (User user : users) {
-            if (user.getUsername().equals(username)) {
+            if (!user.equals(loggedUser) && user.getUsername().equals(username)) {
                 return true;
             }
         }
@@ -106,7 +109,10 @@ public class StudentEditProfileController {
 
     @FXML
     private void initialize() {
-        loggedUser = (Student) LoggingManager.getLoggedUser();
+
+        loggedUser = LoggingManager.getLoggedUser();
+
+        type = (String) Context.popContext();
 
         usernameField.setText(loggedUser.getUsername());
         passwordField.setText(loggedUser.getPassword());
@@ -116,9 +122,9 @@ public class StudentEditProfileController {
         lastNameField.setText(loggedUser.getLastName());
 
         try {
-            studentList = CustomDbTools.getStudents();
+            userList = CustomDbTools.getUsers(type);
 
-            studentList.remove(loggedUser);
+            userList.remove(loggedUser);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

@@ -1,11 +1,13 @@
-package org.coursemed.gui;
+package org.coursemed.gui.teacher;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import org.coursemed.classes.Context;
 import org.coursemed.classes.LoggingManager;
 import org.coursemed.classes.Teacher;
+import org.coursemed.gui.App;
 
 import java.io.IOException;
 import java.util.List;
@@ -39,7 +41,9 @@ public class TeacherMainController {
     @FXML
     private void onEditProfile(ActionEvent event) {
         try {
-            App.setRoot("teacher_edit_profile");
+            Context.pushContext("teacher");
+
+            App.setRoot("edit_profile");
         } catch (IOException e) {
             e.printStackTrace();
         }

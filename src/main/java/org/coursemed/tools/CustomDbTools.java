@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+// Class for project specific database functions
 public class CustomDbTools {
     private CustomDbTools() {
     }
@@ -587,6 +588,33 @@ public class CustomDbTools {
         statement.close();
 
         return adminList;
+    }
+
+    // Returns all users except for the passed user
+    // Used in editing profile to prevent choosing an already existing username
+    public static ArrayList<User> getUsers(String tableName) throws SQLException {
+        String query = "SELECT * FROM " + tableName;
+
+        Statement statement = DbTools.createStatement();
+
+        ResultSet resultSet = statement.executeQuery(query);
+
+        ArrayList<User> userList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            User user = new User();
+            user.setId(resultSet.getInt(1));
+            user.setUsername(resultSet.getString(2));
+            user.setPassword(resultSet.getString(3));
+            user.setFirstName(resultSet.getString(4));
+            user.setLastName(resultSet.getString(5));
+
+            userList.add(user);
+        }
+
+        statement.close();
+
+        return userList;
     }
 
     public static Course getCourse(int courseId) throws SQLException {

@@ -9,7 +9,7 @@
 <?import javafx.scene.control.SpinnerValueFactory.DoubleSpinnerValueFactory?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.coursemed.gui.StudentRateTeacherController"
+      fx:controller="org.coursemed.gui.student.StudentRateTeacherController"
       alignment="CENTER"
       spacing="20"
       style="-fx-padding: 50; -fx-font-size: 15"
