@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.coursemed.gui.teacher.TeacherManageCoursesController"
-      style="-fx-padding: 50"
+      style="-fx-padding: 50; -fx-font-size: 15"
       spacing="10"
       alignment="CENTER"
       prefHeight="400.0" prefWidth="600.0">
 
     <TableView fx:id="courseTable" items="${controller.courseList}">
         <columns>
-            <TableColumn text="Name" prefWidth="${courseTable.width * 0.5}">
+            <TableColumn text="Name" prefWidth="${courseTable.width * 0.6}">
                 <cellValueFactory>
                     <PropertyValueFactory property="name"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="Price" prefWidth="${courseTable.width * 0.5}">
+            <TableColumn text="Price" prefWidth="${courseTable.width * 0.2}">
                 <cellValueFactory>
                     <PropertyValueFactory property="priceString"/>
                 </cellValueFactory>
@@ -30,11 +27,15 @@
         </columns>
     </TableView>
 
-    <HBox spacing="10" alignment="CENTER">
-        <Button onAction="#onCreateCourse" maxWidth="100">Create Course</Button>
-        <Button fx:id="manageSubjectsButton" onAction="#onManageSubjects" disable="true" maxWidth="100" >Manage Subjects</Button>
-        <Button fx:id="deleteCourseButton" onAction="#onDeleteCourse" disable="true" maxWidth="100">Remove Course</Button>
-        <Button onAction="#onBack" maxWidth="100">Back</Button>
-    </HBox>
+    <TilePane alignment="CENTER" hgap="10" vgap="10">
+        <Button onAction="#onCreateCourse" maxWidth="200">Create Course</Button>
+        <Button fx:id="editCourseButton" onAction="#onEditCourse" disable="true" maxWidth="200">Edit Course</Button>
+        <Button fx:id="manageSubjectsButton" onAction="#onManageSubjects" disable="true" maxWidth="200">Manage
+            Subjects
+        </Button>
+        <Button fx:id="deleteCourseButton" onAction="#onDeleteCourse" disable="true" maxWidth="200">Remove Course
+        </Button>
+        <Button onAction="#onBack" maxWidth="200">Back</Button>
+    </TilePane>
 
 </VBox>

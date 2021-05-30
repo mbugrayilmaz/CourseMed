@@ -36,6 +36,32 @@ public class CustomDbTools {
         return false;
     }
 
+    public static boolean updateSubject(Subject subject) {
+        String query = """
+                UPDATE subject
+                SET title=?,video_url=?
+                WHERE id=?;
+                """;
+
+        PreparedStatement preparedStatement = DbTools.prepareStatement(query);
+
+        try {
+            preparedStatement.setString(1, subject.getTitle());
+            preparedStatement.setString(2, subject.getVideoUrl());
+            preparedStatement.setInt(3, subject.getId());
+
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+
+            return true;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return false;
+    }
+
     public static boolean addCourse(Course course) {
         String query = """
                 INSERT INTO course(name,price,teacher_id)
@@ -53,6 +79,32 @@ public class CustomDbTools {
 
             return true;
 
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public static boolean updateCourse(Course course) {
+        String query = """
+                UPDATE course
+                SET name=?,price=?
+                WHERE id=?;
+                """;
+
+        PreparedStatement preparedStatement = DbTools.prepareStatement(query);
+
+        try {
+            preparedStatement.setString(1, course.getName());
+            preparedStatement.setDouble(2, course.getPrice());
+            preparedStatement.setInt(3, course.getId());
+
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+
+            return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -278,6 +330,30 @@ public class CustomDbTools {
         preparedStatement.execute();
 
         preparedStatement.close();
+    }
+
+    public static int getNumberOfStudents(Course course) {
+        String query = """
+                SELECT COUNT(*)
+                FROM enrollment
+                WHERE course_id=?;
+                """;
+
+        PreparedStatement preparedStatement = DbTools.prepareStatement(query);
+
+        try {
+            preparedStatement.setInt(1, course.getId());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return 0;
     }
 
     public static void upsertRating(Student student, Teacher teacher, double rating) throws SQLException {

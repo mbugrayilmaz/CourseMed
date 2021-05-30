@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.coursemed.gui.teacher.TeacherUpsertSubjectController"
+      alignment="CENTER">
+
+    <TextField fx:id="titleField" promptText="Course Title"/>
+    <TextField fx:id="videoUrlField" promptText="Video URL"/>
+    <Label fx:id="infoLabel" style="-fx-text-fill: darkred"/>
+</VBox>

@@ -15,7 +15,7 @@
 
     <Label fx:id="balanceLabel" style="-fx-font-size: 40"/>
 
-    <Label fx:id="infoLabel"/>
+    <Label fx:id="infoLabel" style="-fx-text-fill: darkred"/>
 
     <HBox alignment="CENTER">
         <TextField fx:id="amountField" promptText="Amount"/>

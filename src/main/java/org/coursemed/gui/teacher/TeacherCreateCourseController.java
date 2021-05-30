@@ -13,18 +13,17 @@ import org.coursemed.tools.CustomDbTools;
 import java.io.IOException;
 
 public class TeacherCreateCourseController {
-    @FXML
+
     private TextField nameField;
-
-    @FXML
     private TextField priceField;
-
-    @FXML
     private Label infoLabel;
 
     @FXML
+    private TeacherUpsertCourseController teacherCreateUpsertCourseController;
+
+    @FXML
     private void onCreateCourse(ActionEvent event) {
-        if (isValid()) {
+        if (teacherCreateUpsertCourseController.isValid()) {
             Course course = new Course();
 
             course.setName(nameField.getText());
@@ -50,31 +49,11 @@ public class TeacherCreateCourseController {
         }
     }
 
-    private boolean isValid() {
-        double price = 0;
 
-        if (nameField.getText().isEmpty() || priceField.getText().isEmpty()) {
-            infoLabel.setText("Please fill in all fields");
-
-            return false;
-        }
-
-        try {
-            price = Double.parseDouble(priceField.getText());
-        } catch (final NumberFormatException e) {
-            infoLabel.setText("Price must be numerical");
-
-            return false;
-        }
-
-        if (price < 0) {
-            infoLabel.setText("Price must be positive");
-
-            return false;
-        }
-
-        infoLabel.setText("");
-
-        return true;
+    @FXML
+    private void initialize() {
+        nameField = teacherCreateUpsertCourseController.getNameField();
+        priceField = teacherCreateUpsertCourseController.getPriceField();
+        infoLabel = teacherCreateUpsertCourseController.getInfoLabel();
     }
 }

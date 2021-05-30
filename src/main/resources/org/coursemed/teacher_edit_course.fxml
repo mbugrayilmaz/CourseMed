@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.coursemed.gui.teacher.TeacherEditCourseController"
+      alignment="CENTER"
+      style="-fx-padding: 100; -fx-font-size: 15"
+      spacing="20"
+      prefHeight="400.0" prefWidth="600.0">
+
+    <fx:include fx:id="teacherEditUpsertCourse" source="teacher_upsert_course.fxml"/>
+
+    <Button onAction="#onSaveChanges" maxWidth="200">Save Changes</Button>
+    <Button onAction="#onCancel" maxWidth="200">Cancel</Button>
+
+</VBox>

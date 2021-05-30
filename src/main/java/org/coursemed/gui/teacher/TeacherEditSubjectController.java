@@ -12,28 +12,24 @@ import org.coursemed.tools.Tools;
 
 import java.io.IOException;
 
-public class TeacherAddSubjectController {
+public class TeacherEditSubjectController {
     private TextField titleField;
     private TextField videoUrlField;
 
     @FXML
-    private TeacherUpsertSubjectController teacherAddUpsertSubjectController;
+    private TeacherUpsertSubjectController teacherEditUpsertSubjectController;
+
+    private Subject subject;
 
     @FXML
-    private void onAddSubject(ActionEvent event) {
-        if (teacherAddUpsertSubjectController.isValid()) {
-            Subject subject = new Subject();
-
-            Course course = (Course) Context.popContext();
-
+    private void onSaveChanges(ActionEvent event) {
+        if (teacherEditUpsertSubjectController.isValid()) {
             subject.setTitle(titleField.getText());
             subject.setVideoUrl(Tools.getEmbed(videoUrlField.getText()));
 
-            CustomDbTools.addSubject(subject, course);
+            CustomDbTools.updateSubject(subject);
 
             try {
-                Context.pushContext(course);
-
                 App.setRoot("teacher_manage_subjects");
             } catch (IOException e) {
                 e.printStackTrace();
@@ -52,7 +48,12 @@ public class TeacherAddSubjectController {
 
     @FXML
     private void initialize() {
-        titleField = teacherAddUpsertSubjectController.getTitleField();
-        videoUrlField = teacherAddUpsertSubjectController.getVideoUrlField();
+        subject = (Subject) Context.popContext();
+
+        titleField = teacherEditUpsertSubjectController.getTitleField();
+        videoUrlField = teacherEditUpsertSubjectController.getVideoUrlField();
+
+        titleField.setText(subject.getTitle());
+        videoUrlField.setText(subject.getVideoUrl());
     }
 }

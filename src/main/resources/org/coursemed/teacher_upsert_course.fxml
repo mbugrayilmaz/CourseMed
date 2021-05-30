@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      alignment="CENTER"
+      fx:controller="org.coursemed.gui.teacher.TeacherUpsertCourseController">
+
+    <TextField fx:id="nameField" maxWidth="500" promptText="Name"/>
+    <TextField fx:id="priceField" maxWidth="500" promptText="Price"/>
+    <Label fx:id="infoLabel" style="-fx-text-fill: darkred"/>
+
+</VBox>

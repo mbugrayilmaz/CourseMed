@@ -29,7 +29,6 @@ public class Course extends Item {
         this.name.set(name);
     }
 
-
     public double getPrice() {
         return price.get();
     }

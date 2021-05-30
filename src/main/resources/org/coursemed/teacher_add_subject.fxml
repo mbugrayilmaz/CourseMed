@@ -10,14 +10,12 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.coursemed.gui.teacher.TeacherAddSubjectController"
       alignment="CENTER"
-      style="-fx-padding: 100"
+      style="-fx-padding: 100; -fx-font-size: 15;"
       spacing="20"
       prefHeight="400.0" prefWidth="600.0">
 
-<TextField fx:id="titleField" promptText="Course Title"/>
-<TextField fx:id="videoUrlField" promptText="Video URL"/>
-<Label fx:id="infoLabel"/>
+    <fx:include fx:id="teacherAddUpsertSubject" source="teacher_upsert_subject.fxml"/>
 
-<Button onAction="#onAddSubject">Create Course</Button>
-<Button onAction="#onCancel">Cancel</Button>
+    <Button onAction="#onAddSubject">Create Course</Button>
+    <Button onAction="#onCancel">Cancel</Button>
 </VBox>

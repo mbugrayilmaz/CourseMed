@@ -2,6 +2,7 @@ package org.coursemed.gui.admin;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import org.coursemed.classes.Admin;
 import org.coursemed.classes.Context;
 import org.coursemed.classes.LoggingManager;
 import org.coursemed.gui.App;
@@ -9,6 +10,12 @@ import org.coursemed.gui.App;
 import java.io.IOException;
 
 public class AdminMainController {
+
+    private Admin loggedUser;
+
+    public Admin getLoggedUser() {
+        return loggedUser;
+    }
 
     @FXML
     private void onManageStudents(ActionEvent event) {
@@ -57,5 +64,10 @@ public class AdminMainController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void initialize() {
+        loggedUser = (Admin) LoggingManager.getLoggedUser();
     }
 }

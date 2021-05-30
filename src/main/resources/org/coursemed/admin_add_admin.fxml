@@ -18,7 +18,7 @@
     <PasswordField fx:id="repeatPasswordField" promptText="Repeat Password"/>
     <TextField fx:id="firstNameField" promptText="First Name"/>
     <TextField fx:id="lastNameField" promptText="Last Name"/>
-    <Label fx:id="infoLabel"/>
+    <Label fx:id="infoLabel" style="-fx-text-fill: darkred"/>
 
     <Button onAction="#onAdd" maxWidth="100">Add</Button>
     <Button onAction="#onCancel" maxWidth="100">Cancel</Button>

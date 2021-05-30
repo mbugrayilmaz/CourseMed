@@ -10,13 +10,18 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.coursemed.gui.admin.AdminMainController"
       alignment="CENTER"
-      spacing="40"
+      spacing="20"
+      style="-fx-font-size: 15"
       prefHeight="400.0" prefWidth="600.0">
+
+    <VBox alignment="CENTER" style="-fx-font-size: 30">
+        <Label text="${controller.loggedUser.username}"/>
+        <Label text="${controller.loggedUser.fullName}"/>
+    </VBox>
 
     <Button onAction="#onManageStudents" maxWidth="200">Manage Students</Button>
     <Button onAction="#onManageTeachers" maxWidth="200">Manage Teachers</Button>
     <Button onAction="#onManageAdmins" maxWidth="200">Manage Admins</Button>
-    <Button maxWidth="200">Reports</Button>
     <Button onAction="#onEditProfile" maxWidth="200">Edit Profile</Button>
     <Button onAction="#onLogout" maxWidth="200">Logout</Button>
 

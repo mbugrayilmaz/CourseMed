@@ -33,7 +33,7 @@
         </columns>
     </TableView>
 
-    <Label fx:id="infoLabel"/>
+    <Label fx:id="infoLabel" style="-fx-text-fill: darkred"/>
 
     <HBox spacing="10" alignment="CENTER">
         <Button fx:id="buyButton" onAction="#onBuy" maxWidth="100" disable="true">Buy</Button>

@@ -10,7 +10,7 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.coursemed.gui.generic.EditProfileController"
       alignment="CENTER"
-      style="-fx-padding: 40"
+      style="-fx-padding: 40;-fx-font-size: 15"
       spacing="10"
       prefHeight="400.0" prefWidth="600.0">
 
@@ -19,7 +19,7 @@
     <PasswordField fx:id="repeatPasswordField" promptText="Repeat Password"/>
     <TextField fx:id="firstNameField" promptText="First Name"/>
     <TextField fx:id="lastNameField" promptText="Last Name"/>
-    <Label fx:id="infoLabel"/>
+    <Label fx:id="infoLabel" style="-fx-text-fill: darkred"/>
 
     <Button onAction="#onSaveChanges" maxWidth="200">Save Changes</Button>
     <Button onAction="#onCancel" maxWidth="200">Cancel</Button>

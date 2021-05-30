@@ -11,7 +11,8 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.coursemed.gui.SignupController"
       alignment="CENTER"
-      style="-fx-padding: 40"
+      style="-fx-padding: 40; -fx-font-size: 15"
+      spacing="20"
       prefHeight="400.0" prefWidth="600.0">
 
     <TextField fx:id="usernameField" promptText="Username"/>
@@ -19,29 +20,15 @@
     <PasswordField fx:id="repeatPasswordField" promptText="Repeat Password"/>
     <TextField fx:id="firstNameField" promptText="First Name"/>
     <TextField fx:id="lastNameField" promptText="Last Name"/>
-    <Label fx:id="infoLabel"/>
+    <Label fx:id="infoLabel" style="-fx-text-fill: darkred"/>
 
-    <HBox alignment="CENTER">
-        <VBox.margin>
-            <Insets>
-                <top>20</top>
-            </Insets>
-        </VBox.margin>
-
-        <RadioButton fx:id="studentToggle" selected="true">
-            Student
-
-            <HBox.margin>
-                <Insets>
-                    <right>10</right>
-                </Insets>
-            </HBox.margin>
-        </RadioButton>
+    <HBox alignment="CENTER" spacing="10">
+        <RadioButton fx:id="studentToggle" selected="true">Student</RadioButton>
         <RadioButton fx:id="teacherToggle">Teacher</RadioButton>
     </HBox>
 
-    <Button onAction="#onSignup">Sign Up</Button>
-    <Button onAction="#onCancel">Cancel</Button>
+    <Button onAction="#onSignup" maxWidth="200">Sign Up</Button>
+    <Button onAction="#onCancel" maxWidth="200">Cancel</Button>
 
     <VBox.margin>
         <Insets>
