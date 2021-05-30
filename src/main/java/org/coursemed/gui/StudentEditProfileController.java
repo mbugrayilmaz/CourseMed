@@ -46,7 +46,7 @@ public class StudentEditProfileController {
             loggedUser.setFirstName(firstNameField.getText());
             loggedUser.setLastName(lastNameField.getText());
 
-            CustomDbTools.updateStudent(loggedUser);
+            CustomDbTools.updateUser(loggedUser, "student");
 
             try {
                 App.setRoot("student_main");

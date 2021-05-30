@@ -5,12 +5,12 @@ import javafx.beans.property.SimpleStringProperty;
 import org.coursemed.tools.Tools;
 
 import java.util.ArrayList;
+import java.util.stream.DoubleStream;
 
 public class Teacher extends User {
     private SimpleDoubleProperty balance = new SimpleDoubleProperty();
     private SimpleStringProperty balanceString = new SimpleStringProperty();
-    private SimpleDoubleProperty rating = new SimpleDoubleProperty();
-    private ArrayList<Course> courses;
+    private ArrayList<Double> ratingList = new ArrayList<>();
 
     public double getBalance() {
         return balance.get();
@@ -36,15 +36,23 @@ public class Teacher extends User {
         setBalance(getBalance() - balance);
     }
 
+    public ArrayList<Double> getRatingList() {
+        return ratingList;
+    }
+
+    public void setRatingList(ArrayList<Double> ratingList) {
+        this.ratingList = ratingList;
+    }
+
     public double getRating() {
-        return rating.get();
+        return ratingList.stream().mapToDouble(d -> d).average().orElse(0);
     }
 
-    public SimpleDoubleProperty ratingProperty() {
-        return rating;
+    public String getRatingAndTotal() {
+        return getRating() + "/10, Total ratings: " + ratingList.size();
     }
 
-    public void setRating(double rating) {
-        this.rating.set(rating);
+    public String getNameWithRating() {
+        return getFullName() + " (" + getRatingAndTotal() + ")";
     }
 }

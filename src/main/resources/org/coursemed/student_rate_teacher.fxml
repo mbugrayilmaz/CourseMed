@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.SpinnerValueFactory.DoubleSpinnerValueFactory?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.coursemed.gui.StudentRateTeacherController"
+      alignment="CENTER"
+      spacing="20"
+      style="-fx-padding: 50; -fx-font-size: 15"
+      prefHeight="400.0" prefWidth="600.0">
+
+    <VBox alignment="CENTER" style="-fx-font-size: 25">
+        <Label fx:id="ratingLabel"/>
+        <Label fx:id="userRatingLabel"/>
+    </VBox>
+
+    <Spinner fx:id="ratingSpinner" BorderPane.alignment="CENTER">
+        <valueFactory>
+            <SpinnerValueFactory.DoubleSpinnerValueFactory min="1" max="10"/>
+        </valueFactory>
+    </Spinner>
+
+    <Button onAction="#onSaveRating" maxWidth="200">Save Rating</Button>
+    <Button onAction="#onBack" maxWidth="200">Cancel</Button>
+
+</VBox>

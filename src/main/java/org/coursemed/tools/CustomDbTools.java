@@ -203,6 +203,35 @@ public class CustomDbTools {
         return false;
     }
 
+    public static boolean updateUser(User user, String tableName) {
+        String query = """
+                UPDATE ?
+                SET username=?,password=?,first_name=?,last_name=?
+                WHERE id=?;
+                """;
+
+        PreparedStatement preparedStatement = DbTools.prepareStatement(query);
+
+        try {
+            preparedStatement.setString(1, tableName);
+            preparedStatement.setString(2, user.getUsername());
+            preparedStatement.setString(3, user.getPassword());
+            preparedStatement.setString(4, user.getFirstName());
+            preparedStatement.setString(5, user.getLastName());
+            preparedStatement.setInt(6, user.getId());
+
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+
+            return true;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return false;
+    }
+
     public static boolean deleteItem(Item item, String table) {
         String query = "DELETE FROM " + table + " WHERE id=?;";
 
@@ -248,6 +277,110 @@ public class CustomDbTools {
         preparedStatement.execute();
 
         preparedStatement.close();
+    }
+
+    public static void upsertRating(Student student, Teacher teacher, double rating) throws SQLException {
+        double oldRating = getRating(student, teacher);
+
+        String query;
+
+        PreparedStatement preparedStatement;
+
+        if (oldRating == 0) {
+            query = """
+                    INSERT INTO ratings(student_id,teacher_id,rating)
+                    VALUES(?,?,?)
+                    """;
+
+            preparedStatement = DbTools.prepareStatement(query);
+
+            preparedStatement.setInt(1, student.getId());
+            preparedStatement.setInt(2, teacher.getId());
+            preparedStatement.setDouble(3, rating);
+        } else {
+            query = """
+                    UPDATE ratings
+                    SET rating=?
+                    WHERE student_id=? AND teacher_id=?;
+                    """;
+
+            preparedStatement = DbTools.prepareStatement(query);
+
+            preparedStatement.setDouble(1, rating);
+            preparedStatement.setInt(2, student.getId());
+            preparedStatement.setInt(3, teacher.getId());
+        }
+
+        preparedStatement.execute();
+
+        preparedStatement.close();
+
+        teacher.setRatingList(new ArrayList<>(getRatings(teacher)));
+    }
+
+    public static double getRating(Student student, Teacher teacher) {
+        createRatingsIfNotExists();
+
+        double rating = 0;
+
+        String query = """
+                SELECT rating
+                FROM ratings
+                WHERE student_id=? AND teacher_id=?;
+                """;
+
+        try (PreparedStatement preparedStatement = DbTools.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, student.getId());
+            preparedStatement.setInt(2, teacher.getId());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                rating = resultSet.getDouble(1);
+            }
+
+            return rating;
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return 0;
+    }
+
+    public static ArrayList<Double> getRatings(Teacher teacher) {
+        createRatingsIfNotExists();
+
+        ArrayList<Double> ratingList;
+
+        String query = """
+                SELECT rating
+                FROM ratings
+                WHERE teacher_id=?;
+                """;
+
+        try (PreparedStatement preparedStatement = DbTools.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, teacher.getId());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            ratingList = new ArrayList<>();
+
+            while (resultSet.next()) {
+                ratingList.add(resultSet.getDouble(1));
+            }
+
+            teacher.setRatingList(new ArrayList<>(ratingList));
+
+            return ratingList;
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return null;
     }
 
     public static ArrayList<Course> getAvailableCourses(Student student) throws SQLException {
@@ -419,6 +552,8 @@ public class CustomDbTools {
             teacher.setLastName(resultSet.getString(5));
             teacher.setBalance(resultSet.getDouble(6));
 
+            getRatings(teacher);
+
             teacherList.add(teacher);
         }
 
@@ -492,6 +627,8 @@ public class CustomDbTools {
             teacher.setLastName(resultSet.getString(5));
             teacher.setBalance(resultSet.getDouble(6));
 
+            teacher.setRatingList(getRatings(teacher));
+
             preparedStatement.close();
 
             return teacher;
@@ -501,6 +638,23 @@ public class CustomDbTools {
         }
 
         return null;
+    }
+
+    private static void createRatingsIfNotExists() {
+        String query = """
+                CREATE TABLE IF NOT EXISTS ratings(
+                id INTEGER PRIMARY KEY,
+                teacher_id INTEGER NOT NULL,
+                student_id INTEGER NOT NULL,
+                rating REAL NOT NULL,
+                FOREIGN KEY(teacher_id) REFERENCES teacher(id)
+                    ON DELETE CASCADE ON UPDATE CASCADE,
+                FOREIGN KEY(student_id) REFERENCES student(id)
+                    ON DELETE CASCADE ON UPDATE CASCADE,
+                UNIQUE(teacher_id,student_id));
+                """;
+
+        DbTools.executeQuery(query);
     }
 
     private static void createEnrollmentIfNotExists() {

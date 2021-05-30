@@ -63,6 +63,10 @@ public class User extends Item {
         return getFirstName() + " " + getLastName();
     }
 
+    public SimpleStringProperty fullNameProperty() {
+        return fullName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

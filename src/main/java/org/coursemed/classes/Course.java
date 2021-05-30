@@ -13,8 +13,6 @@ public class Course extends Item {
     private final SimpleDoubleProperty price = new SimpleDoubleProperty();
     private final SimpleStringProperty priceString = new SimpleStringProperty();
 
-    private final SimpleStringProperty teacherName = new SimpleStringProperty();
-
     private final SimpleObjectProperty<Teacher> teacher = new SimpleObjectProperty<>();
 
     private ArrayList<Subject> subjects = new ArrayList<>();
