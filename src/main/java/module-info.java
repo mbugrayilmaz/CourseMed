@@ -4,6 +4,7 @@ module org.coursemed {
     requires javafx.web;
     requires java.sql;
     requires sqlite.jdbc;
+    requires jdk.crypto.cryptoki;
 
     opens org.coursemed to javafx.fxml, javafx.graphics;
     opens org.coursemed.classes to javafx.fxml, javafx.graphics, javafx.base;

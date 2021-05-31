@@ -70,6 +70,7 @@
                             <goal>add-module-info</goal>
                         </goals>
                         <configuration>
+                            <overwriteExistingFiles>true</overwriteExistingFiles>
                             <outputDirectory>${project.build.directory}/jmods</outputDirectory>
                             <modules>
                                 <module>
