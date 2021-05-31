@@ -4,15 +4,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import org.coursemed.classes.Teacher;
-import org.coursemed.gui.App;
+import org.coursemed.App;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class AdminManageTeachersControllers {
+    @FXML
+    public Button deleteTeacherButton;
     @FXML
     private TableView<Teacher> teacherTable;
 
@@ -27,7 +30,7 @@ public class AdminManageTeachersControllers {
         if (teacherTable.getSelectionModel().getSelectedIndex() != -1) {
             Teacher teacher = teacherTable.getSelectionModel().getSelectedItem();
 
-            CustomDbTools.deleteItem(teacher,"teacher");
+            CustomDbTools.deleteItem(teacher, "teacher");
 
             teacherList.remove(teacher);
         }
@@ -46,6 +49,12 @@ public class AdminManageTeachersControllers {
     private void initialize() {
         try {
             teacherList.addAll(CustomDbTools.getTeachers());
+
+            teacherTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+                if (newSelection != null) {
+                    deleteTeacherButton.setDisable(false);
+                }
+            });
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

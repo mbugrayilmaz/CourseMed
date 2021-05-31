@@ -9,7 +9,7 @@ import javafx.scene.control.TableView;
 import org.coursemed.classes.Context;
 import org.coursemed.classes.Course;
 import org.coursemed.classes.Subject;
-import org.coursemed.gui.App;
+import org.coursemed.App;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;
@@ -34,6 +34,10 @@ public class TeacherManageSubjectsController {
 
     public ObservableList<Subject> getSubjectList() {
         return subjectList;
+    }
+
+    public Course getCourse() {
+        return course;
     }
 
     @FXML

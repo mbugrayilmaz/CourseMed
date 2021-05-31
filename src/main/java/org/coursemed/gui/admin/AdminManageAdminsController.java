@@ -4,9 +4,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import org.coursemed.classes.Admin;
-import org.coursemed.gui.App;
+import org.coursemed.App;
+import org.coursemed.classes.LoggingManager;
+import org.coursemed.classes.User;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;
@@ -14,19 +18,18 @@ import java.sql.SQLException;
 
 public class AdminManageAdminsController {
 
+    private Admin loggedUser;
+
+    @FXML
+    private Label infoLabel;
+
+    @FXML
+    private Button deleteAdminButton;
+
     private ObservableList<Admin> adminList = FXCollections.observableArrayList();
 
     @FXML
     private TableView<Admin> adminTable;
-
-    @FXML
-    private void initialize() {
-        try {
-            adminList.addAll(CustomDbTools.getAdmins());
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
 
     @FXML
     private void onAddAdmin(ActionEvent event) {
@@ -42,9 +45,15 @@ public class AdminManageAdminsController {
         if (adminTable.getSelectionModel().getSelectedIndex() != -1) {
             Admin admin = adminTable.getSelectionModel().getSelectedItem();
 
-            CustomDbTools.deleteItem(admin,"admin");
+            if (admin.equals(loggedUser)) {
+                infoLabel.setText("You cannot delete yourself");
+            } else {
+                CustomDbTools.deleteItem(admin, "admin");
 
-            adminList.remove(admin);
+                adminList.remove(admin);
+
+                infoLabel.setText("");
+            }
         }
     }
 
@@ -59,5 +68,22 @@ public class AdminManageAdminsController {
 
     public ObservableList<Admin> getAdminList() {
         return adminList;
+    }
+
+    @FXML
+    private void initialize() {
+        try {
+            loggedUser = (Admin) LoggingManager.getLoggedUser();
+
+            adminList.addAll(CustomDbTools.getAdmins());
+
+            adminTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+                if (newSelection != null) {
+                    deleteAdminButton.setDisable(false);
+                }
+            });
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }

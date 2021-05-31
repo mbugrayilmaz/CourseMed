@@ -1,11 +1,10 @@
 package org.coursemed;
 
-import org.coursemed.gui.App;
-import org.coursemed.tools.DbTools;
+import org.coursemed.tools.CustomDbTools;
 
 public class Main {
     public static void main(String[] args) {
-        DbTools.startConnection("jdbc:sqlite:coursemed.db");
+        CustomDbTools.initialize("coursemed.db");
         App.main(args);
     }
 }

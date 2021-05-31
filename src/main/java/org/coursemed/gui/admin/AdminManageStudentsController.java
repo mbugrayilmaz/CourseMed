@@ -4,15 +4,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import org.coursemed.classes.Student;
-import org.coursemed.gui.App;
+import org.coursemed.App;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class AdminManageStudentsController {
+    @FXML
+    public Button deleteStudentButton;
     @FXML
     private TableView<Student> studentTable;
 
@@ -46,6 +49,12 @@ public class AdminManageStudentsController {
     private void initialize() {
         try {
             studentList.addAll(CustomDbTools.getStudents());
+
+            studentTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+                if (newSelection != null) {
+                    deleteStudentButton.setDisable(false);
+                }
+            });
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

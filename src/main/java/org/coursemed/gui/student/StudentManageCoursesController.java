@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableView;
 import org.coursemed.classes.*;
-import org.coursemed.gui.App;
+import org.coursemed.App;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;

@@ -3,10 +3,8 @@ package org.coursemed.gui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import org.coursemed.classes.LoggingManager;
-import org.coursemed.classes.Student;
-import org.coursemed.classes.Teacher;
-import org.coursemed.classes.User;
+import org.coursemed.App;
+import org.coursemed.classes.*;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;
@@ -14,6 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SignupController {
+
+    private User user;
 
     private ArrayList<Student> studentList;
     private ArrayList<Teacher> teacherList;
@@ -46,7 +46,7 @@ public class SignupController {
     private void onSignup(ActionEvent event) throws IOException {
         if (isValid()) {
             if (studentToggle.isSelected()) {
-                Student student = new Student();
+                Student student = (Student) user;
                 student.setUsername(usernameField.getText());
                 student.setPassword(passwordField.getText());
                 student.setFirstName(firstNameField.getText());
@@ -61,7 +61,7 @@ public class SignupController {
 
                 App.setRoot("student_main");
             } else {
-                Teacher teacher = new Teacher();
+                Teacher teacher = (Teacher) user;
                 teacher.setUsername(usernameField.getText());
                 teacher.setPassword(passwordField.getText());
                 teacher.setFirstName(firstNameField.getText());
@@ -89,6 +89,20 @@ public class SignupController {
         ToggleGroup toggleGroup = new ToggleGroup();
 
         toggleGroup.getToggles().addAll(studentToggle, teacherToggle);
+
+        user = (User) Context.popContext();
+
+        if (user instanceof Student) {
+            studentToggle.setSelected(true);
+        } else {
+            teacherToggle.setSelected(true);
+        }
+
+        usernameField.setText(user.getUsername());
+
+        passwordField.setText(user.getPassword());
+
+        repeatPasswordField.setText(user.getPassword());
 
         try {
             studentList = CustomDbTools.getStudents();

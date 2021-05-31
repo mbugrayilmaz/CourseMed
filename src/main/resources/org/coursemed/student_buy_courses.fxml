@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.TilePane?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.coursemed.gui.student.StudentBuyCoursesController"
@@ -35,9 +36,9 @@
 
     <Label fx:id="infoLabel" style="-fx-text-fill: darkred"/>
 
-    <HBox spacing="10" alignment="CENTER">
-        <Button fx:id="buyButton" onAction="#onBuy" maxWidth="100" disable="true">Buy</Button>
-        <Button onAction="#onBack" maxWidth="100">Back</Button>
-    </HBox>
+    <TilePane alignment="CENTER" hgap="10" vgap="10">
+        <Button fx:id="buyButton" onAction="#onBuy" maxWidth="200" disable="true">Buy</Button>
+        <Button onAction="#onBack" maxWidth="200">Back</Button>
+    </TilePane>
 
 </VBox>

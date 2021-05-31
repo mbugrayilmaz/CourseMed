@@ -7,6 +7,7 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.TilePane?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.coursemed.gui.student.StudentManageCoursesController"
@@ -30,10 +31,10 @@
         </columns>
     </TableView>
 
-    <HBox spacing="10" alignment="CENTER">
-        <Button fx:id="viewCourseButton" onAction="#onViewCourse" disable="true" maxWidth="100">View Course</Button>
-        <Button fx:id="dropCourseButton" onAction="#onDropCourse" disable="true" maxWidth="100">Drop Course</Button>
-        <Button onAction="#onBack" maxWidth="100">Back</Button>
-    </HBox>
+    <TilePane alignment="CENTER" hgap="10" vgap="10">
+        <Button fx:id="viewCourseButton" onAction="#onViewCourse" disable="true" maxWidth="200">View Course</Button>
+        <Button fx:id="dropCourseButton" onAction="#onDropCourse" disable="true" maxWidth="200">Drop Course</Button>
+        <Button onAction="#onBack" maxWidth="200">Back</Button>
+    </TilePane>
 
 </VBox>

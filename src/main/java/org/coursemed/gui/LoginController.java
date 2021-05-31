@@ -3,6 +3,7 @@ package org.coursemed.gui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import org.coursemed.App;
 import org.coursemed.classes.*;
 import org.coursemed.tools.CustomDbTools;
 
@@ -56,8 +57,25 @@ public class LoginController {
     }
 
     @FXML
-    private void onSignup(ActionEvent event) throws IOException {
-        App.setRoot("signup");
+    private void onSignup(ActionEvent event) {
+        User user;
+
+        if (studentRadioButton.isSelected()) {
+            user = new Student();
+        } else {
+            user = new Teacher();
+        }
+
+        user.setUsername(usernameField.getText());
+        user.setPassword(passwordField.getText());
+
+        Context.pushContext(user);
+
+        try {
+            App.setRoot("signup");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

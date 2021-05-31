@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import org.coursemed.classes.Admin;
 import org.coursemed.classes.Context;
 import org.coursemed.classes.LoggingManager;
-import org.coursemed.gui.App;
+import org.coursemed.App;
 
 import java.io.IOException;
 

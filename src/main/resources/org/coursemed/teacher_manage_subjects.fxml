@@ -16,7 +16,7 @@
       style="-fx-padding: 50; -fx-font-size: 15"
       prefHeight="400.0" prefWidth="600.0">
 
-    <Label style="-fx-font-size: 20">MANAGE SUBJECTS</Label>
+    <Label style="-fx-font-size: 20" text="${controller.course.name}"/>
 
     <TableView fx:id="subjectTable" items="${controller.subjectList}">
         <columns>
@@ -37,7 +37,8 @@
         <Button maxWidth="200" onAction="#onAddSubject">Add Subject</Button>
         <Button fx:id="editSubjectButton" maxWidth="200" onAction="#onEditSubject" disable="true">Edit Subject</Button>
         <Button fx:id="viewSubjectButton" maxWidth="200" onAction="#onViewSubject" disable="true">View Subject</Button>
-        <Button fx:id="deleteSubjectButton" maxWidth="200" onAction="#onDeleteSubject" disable="true">Delete Subject</Button>
+        <Button fx:id="deleteSubjectButton" maxWidth="200" onAction="#onDeleteSubject" disable="true">Delete Subject
+        </Button>
         <Button maxWidth="200" onAction="#onBack">Back</Button>
     </TilePane>
 </VBox>

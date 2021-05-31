@@ -8,9 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import org.coursemed.classes.*;
-import org.coursemed.gui.App;
+import org.coursemed.App;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;

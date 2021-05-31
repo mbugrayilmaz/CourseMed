@@ -2,6 +2,7 @@ package org.coursemed.tools;
 
 import org.coursemed.classes.*;
 
+import java.io.File;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +12,26 @@ import java.util.ArrayList;
 // Class for project specific database functions
 public class CustomDbTools {
     private CustomDbTools() {
+    }
+
+    public static void initialize(String fileName) {
+        boolean alreadyExists = new File(fileName).exists();
+
+        DbTools.startConnection("jdbc:sqlite:"+fileName);
+
+        if (!alreadyExists) {
+            createTables();
+        }
+    }
+
+    private static void createTables(){
+        createStudentIfNotExists();
+        createTeacherIfNotExists();
+        createAdminIfNotExists();
+        createCourseIfNotExists();
+        createSubjectIfNotExists();
+        createEnrollmentIfNotExists();
+        createRatingsIfNotExists();
     }
 
     public static boolean addSubject(Subject subject, Course course) {
@@ -299,8 +320,6 @@ public class CustomDbTools {
     }
 
     public static void enroll(Student student, Course course) throws SQLException {
-        createEnrollmentIfNotExists();
-
         String query = """
                 INSERT INTO enrollment(student_id, course_id)
                 VALUES(?,?);
@@ -396,8 +415,6 @@ public class CustomDbTools {
     }
 
     public static double getRating(Student student, Teacher teacher) {
-        createRatingsIfNotExists();
-
         double rating = 0;
 
         String query = """
@@ -427,8 +444,6 @@ public class CustomDbTools {
     }
 
     public static ArrayList<Double> getRatings(Teacher teacher) {
-        createRatingsIfNotExists();
-
         ArrayList<Double> ratingList;
 
         String query = """
@@ -461,8 +476,6 @@ public class CustomDbTools {
     }
 
     public static ArrayList<Course> getAvailableCourses(Student student) throws SQLException {
-        createEnrollmentIfNotExists();
-
         String query = """
                 SELECT course.*
                     FROM course
@@ -498,8 +511,6 @@ public class CustomDbTools {
 
 
     public static ArrayList<Subject> getSubjects(Course course) throws SQLException {
-        createSubjectIfNotExists();
-
         String query = "SELECT * FROM subject WHERE course_id=?";
 
         PreparedStatement preparedStatement = DbTools.prepareStatement(query);
@@ -526,8 +537,6 @@ public class CustomDbTools {
     }
 
     public static ArrayList<Course> getCourses(Student student) throws SQLException {
-        createEnrollmentIfNotExists();
-
         String query = "SELECT course_id FROM enrollment WHERE student_id=?";
 
         PreparedStatement preparedStatement = DbTools.prepareStatement(query);
@@ -552,8 +561,6 @@ public class CustomDbTools {
     }
 
     public static ArrayList<Course> getCourses(Teacher teacher) throws SQLException {
-        createCourseIfNotExists();
-
         String query = "SELECT * FROM course WHERE teacher_id=?";
 
         PreparedStatement preparedStatement = DbTools.prepareStatement(query);
@@ -582,8 +589,6 @@ public class CustomDbTools {
     }
 
     public static ArrayList<Student> getStudents() throws SQLException {
-        createStudentIfNotExists();
-
         String query = "SELECT * FROM student";
 
         Statement statement = DbTools.createStatement();
@@ -610,8 +615,6 @@ public class CustomDbTools {
     }
 
     public static ArrayList<Teacher> getTeachers() throws SQLException {
-        createTeacherIfNotExists();
-
         String query = "SELECT * FROM teacher";
 
         Statement statement = DbTools.createStatement();
@@ -640,8 +643,6 @@ public class CustomDbTools {
     }
 
     public static ArrayList<Admin> getAdmins() throws SQLException {
-        createAdminIfNotExists();
-
         String query = "SELECT * FROM admin";
 
         Statement statement = DbTools.createStatement();
