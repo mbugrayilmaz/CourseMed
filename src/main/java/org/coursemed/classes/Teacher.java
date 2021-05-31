@@ -4,7 +4,10 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import org.coursemed.tools.Tools;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Teacher extends User {
     private SimpleDoubleProperty balance = new SimpleDoubleProperty();
@@ -44,7 +47,11 @@ public class Teacher extends User {
     }
 
     public double getRating() {
-        return ratingList.stream().mapToDouble(d -> d).average().orElse(0);
+        DecimalFormat decimalFormat = new DecimalFormat("#.#", new DecimalFormatSymbols(Locale.US));
+
+        double rating = ratingList.stream().mapToDouble(d -> d).average().orElse(0);
+
+        return Double.parseDouble(decimalFormat.format(rating));
     }
 
     public String getRatingAndTotal() {
