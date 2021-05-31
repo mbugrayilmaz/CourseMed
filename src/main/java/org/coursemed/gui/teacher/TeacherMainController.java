@@ -4,10 +4,10 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import org.coursemed.App;
 import org.coursemed.classes.Context;
 import org.coursemed.classes.LoggingManager;
 import org.coursemed.classes.Teacher;
-import org.coursemed.App;
 
 import java.io.IOException;
 import java.util.List;

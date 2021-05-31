@@ -6,8 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
-import org.coursemed.classes.Teacher;
 import org.coursemed.App;
+import org.coursemed.classes.Teacher;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;

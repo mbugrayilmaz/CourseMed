@@ -3,10 +3,10 @@ package org.coursemed.gui.student;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import org.coursemed.App;
 import org.coursemed.classes.Context;
 import org.coursemed.classes.LoggingManager;
 import org.coursemed.classes.Student;
-import org.coursemed.App;
 
 import java.io.IOException;
 

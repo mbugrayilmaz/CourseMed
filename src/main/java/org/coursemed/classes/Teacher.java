@@ -5,7 +5,6 @@ import javafx.beans.property.SimpleStringProperty;
 import org.coursemed.tools.Tools;
 
 import java.util.ArrayList;
-import java.util.stream.DoubleStream;
 
 public class Teacher extends User {
     private SimpleDoubleProperty balance = new SimpleDoubleProperty();

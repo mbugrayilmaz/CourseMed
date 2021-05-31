@@ -8,8 +8,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import org.coursemed.classes.*;
 import org.coursemed.App;
+import org.coursemed.classes.Context;
+import org.coursemed.classes.Course;
+import org.coursemed.classes.LoggingManager;
+import org.coursemed.classes.Teacher;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;

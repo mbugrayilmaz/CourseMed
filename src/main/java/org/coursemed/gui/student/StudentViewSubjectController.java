@@ -3,9 +3,9 @@ package org.coursemed.gui.student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.web.WebView;
+import org.coursemed.App;
 import org.coursemed.classes.Context;
 import org.coursemed.classes.Subject;
-import org.coursemed.App;
 
 import java.io.IOException;
 

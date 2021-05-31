@@ -2,10 +2,10 @@ package org.coursemed.gui.admin;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import org.coursemed.App;
 import org.coursemed.classes.Admin;
 import org.coursemed.classes.Context;
 import org.coursemed.classes.LoggingManager;
-import org.coursemed.App;
 
 import java.io.IOException;
 

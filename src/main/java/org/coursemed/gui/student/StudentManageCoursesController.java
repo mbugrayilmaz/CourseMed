@@ -8,8 +8,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableView;
-import org.coursemed.classes.*;
 import org.coursemed.App;
+import org.coursemed.classes.Context;
+import org.coursemed.classes.Course;
+import org.coursemed.classes.LoggingManager;
+import org.coursemed.classes.Student;
 import org.coursemed.tools.CustomDbTools;
 
 import java.io.IOException;
