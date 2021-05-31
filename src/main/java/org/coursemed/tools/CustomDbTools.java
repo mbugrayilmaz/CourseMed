@@ -477,7 +477,7 @@ public class CustomDbTools {
 
     public static ArrayList<Course> getAvailableCourses(Student student) throws SQLException {
         String query = """
-                SELECT course.*
+                SELECT DISTINCT course.*
                 FROM course
                     LEFT JOIN enrollment
                         ON course.id = enrollment.course_id
