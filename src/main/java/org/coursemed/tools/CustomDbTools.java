@@ -17,14 +17,14 @@ public class CustomDbTools {
     public static void initialize(String fileName) {
         boolean alreadyExists = new File(fileName).exists();
 
-        DbTools.startConnection("jdbc:sqlite:"+fileName);
+        DbTools.startConnection("jdbc:sqlite:" + fileName);
 
         if (!alreadyExists) {
             createTables();
         }
     }
 
-    private static void createTables(){
+    private static void createTables() {
         createStudentIfNotExists();
         createTeacherIfNotExists();
         createAdminIfNotExists();
@@ -478,10 +478,14 @@ public class CustomDbTools {
     public static ArrayList<Course> getAvailableCourses(Student student) throws SQLException {
         String query = """
                 SELECT course.*
-                    FROM course
+                FROM course
                     LEFT JOIN enrollment
-                    ON course.id=enrollment.course_id
-                    WHERE student_id!=? OR student_id IS NULL
+                        ON course.id = enrollment.course_id
+                WHERE course.id NOT IN (
+                    SELECT course_id
+                    FROM enrollment
+                    WHERE student_id IS NOT NULL
+                        AND student_id = ?)
                 """;
 
         PreparedStatement preparedStatement = DbTools.prepareStatement(query);

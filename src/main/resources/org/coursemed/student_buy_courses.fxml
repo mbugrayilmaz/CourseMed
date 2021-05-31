@@ -14,17 +14,17 @@
 
     <TableView fx:id="courseTable" items="${controller.courseList}">
         <columns>
-            <TableColumn text="Name" prefWidth="${courseTable.width * 0.25}">
+            <TableColumn text="Name" prefWidth="${courseTable.width * 0.4}">
                 <cellValueFactory>
                     <PropertyValueFactory property="name"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="Teacher Name" prefWidth="${courseTable.width * 0.5}">
+            <TableColumn text="Teacher Name" prefWidth="${courseTable.width * 0.4}">
                 <cellValueFactory>
                     <PropertyValueFactory property="teacherName"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="Price" prefWidth="${courseTable.width * 0.25}">
+            <TableColumn text="Price" prefWidth="${courseTable.width * 0.2}">
                 <cellValueFactory>
                     <PropertyValueFactory property="priceString"/>
                 </cellValueFactory>
